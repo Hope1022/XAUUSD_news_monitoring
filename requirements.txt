@@ -1,0 +1,7 @@
+langchain_groq
+langchain_core
+dotenv
+sqlalchemy
+apscheduler
+requests
+newsapi
