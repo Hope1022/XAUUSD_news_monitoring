@@ -2,7 +2,7 @@ import requests
 import os
 from newsapi import NewsApiClient
 
-#loading our website
+
 newsapi = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
 
 # reddit = praw.Reddit(
@@ -136,12 +136,6 @@ def get_current_gold_price():
         print(f"Gold price failed: {e}")
         return "unavailable"
 
-
-#its on main.py, main py will call this by sendind the value of 
-#use_newsapi as true or false, by default it is set to true
-#if request limit reaches it will be false then 
-#all_news.extend(get_newsapi_gold_news()) this line will be ignored
-#for other they don't have a limit or their limit is much
 def collect_all_news(use_newsapi=True):
     all_news = []
 
