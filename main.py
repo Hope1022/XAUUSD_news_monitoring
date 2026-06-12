@@ -12,12 +12,8 @@ load_dotenv()
 
 Base.metadata.create_all(engine)
 
-# processed = set()
 daily_newsapi_calls = 0      # track NewsAPI usage
 last_reset_day = datetime.now().day
-
-# def get_hash(text):
-#     return hashlib.md5(text.encode()).hexdigest()
 
 def reset_daily_counter():
     """resets counter at midnight"""
@@ -46,10 +42,8 @@ def run_monitor():
         title_hash = hashing.hashing(article["title"])
         hashed_title = db.query(hash_title).filter(hash_title.title == title_hash).first()
         
-        #article_hash = get_hash(article["title"])
         if hashed_title:
-            continue #goes backt to the loop again
-        #if it was break it will completely break the loop again
+            continue 
 
         new_entry = hash_title(title = title_hash)
         db.add(new_entry)
@@ -62,7 +56,7 @@ def run_monitor():
         else:
             print(f"Skip: {article['title'][:40]}")
 
-# run immediately then every 20 minutes
+
 run_monitor()
 
 scheduler = BlockingScheduler()
