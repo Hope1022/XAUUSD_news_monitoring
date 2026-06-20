@@ -12,8 +12,6 @@ def send_alert(article, analysis):
     sender    = os.getenv("EMAIL_ADDRESS")
     password  = os.getenv("EMAIL_PASSWORD")
     recipient = os.getenv("ALERT_EMAIL")
-    #.get() is like get the urgency value from a dictionary ("urgency":"high")
-    #which is high, but if some how failed use medium rather than empty
     urgency   = analysis.get("urgency", "medium").upper()
     #same for reason get "reason" value if not just return an empty for the reason value makes sense
     reason    = analysis.get("reason", "")
