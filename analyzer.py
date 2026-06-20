@@ -42,9 +42,8 @@ def analyze_article(article):
             "source": article["source"]
         })
         
-        #strip means removing space from begging and end, split = spliti the string by new line then store it in a list
-        lines = response.strip().split("\n")
-        #jus better that result = {}, better than returning empty
+       
+        lines = response.strip().split("\n") 
         result = {
             "relevant": False,
             "reason": "unknown",
@@ -54,11 +53,8 @@ def analyze_article(article):
         for line in lines:
             if "RELEVANT:" in line:
                 result["relevant"] = "yes" in line.lower()
-            #if a string "REASON:" is there inside the list,
-            #replace REASON: with empty or nothing, or just remove  REASON: from the sentence
             if "REASON:" in line:
                 result["reason"] = line.replace("REASON:", "").strip()
-            #same like reason
             if "URGENCY:" in line:
                 result["urgency"] = line.replace("URGENCY:", "").strip()
 
