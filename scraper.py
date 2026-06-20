@@ -13,8 +13,7 @@ newsapi = NewsApiClient(api_key=os.getenv("NEWS_API_KEY"))
 
 def get_newsapi_gold_news():
     try:
-        #articles now have 10 latest articles related to gold from 100+ sites
-        articles = newsapi.get_everything(
+       articles = newsapi.get_everything(
             q="gold OR XAUUSD OR XAU",
             language="en",
             sort_by="publishedAt", #give the latest
@@ -23,7 +22,7 @@ def get_newsapi_gold_news():
         
         results = []
         for article in articles["articles"]: #loop through each article
-            #news api sometimes give only description and we might use that as a content
+           
             content = article.get("content") or article.get("description", "")
             if content:
                 #this structure will be a common structure for all news
@@ -42,7 +41,7 @@ def get_newsapi_gold_news():
 
 def get_guardian_gold_news():
     try:
-        #same goal different process no need to memorize
+        
         url = "https://content.guardianapis.com/search"
         params = {
             "q": "gold OR XAUUSD OR inflation",
